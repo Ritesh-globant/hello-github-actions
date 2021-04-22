@@ -8,4 +8,4 @@ jobs:
       # extract branch name
       - name: start release or hotfix version bump
         id: start
-        run: .github/env.sh
+        run: ./.github/env.sh
