@@ -24,3 +24,8 @@ jobs:
       
       - name: Trigger script
         run: .github/env.sh
+        env:
+          BRANCH_head: ${{ github.head_ref }}
+          BRANCH_bump: bump/${{ steps.finish.outputs.version }}
+          BRANCH_base: ${{ github.base_ref }}
+          BRANCH_event: '${{ github.event.ref }}'
