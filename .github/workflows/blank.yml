@@ -6,17 +6,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       # extract branch name
-      - name: Extract branch name
-        if: github.event_name != 'pull_request'
-        shell: bash
-        run: echo ${GITHUB_REF#refs/heads/}
-        id: extract_branch
-
-      # extract branch name on pull request
-      - name: Print branch name
-        if: github.event_name == 'pull_request'
-        run: echo ${GITHUB_HEAD_REF}
-        
       - name: start release or hotfix version bump
         id: start
         run: .github/env.sh
