@@ -17,5 +17,6 @@ jobs:
         if: github.event_name == 'pull_request'
         run: echo ${GITHUB_HEAD_REF}
         
-      - name: trigger shell script
+      - name: start release or hotfix version bump
+        id: start
         run: .github/env.sh
