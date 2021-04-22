@@ -16,7 +16,6 @@ jobs:
       - name: Print branch name
         if: github.event_name == 'pull_request'
         run: echo ${GITHUB_HEAD_REF}
-
-      # print branch name
-      - name: Get branch name
-        run: echo 'The branch name is' $BRANCH_NAME
+        
+      - name: trigger shell script
+        run: .github/env.sh
