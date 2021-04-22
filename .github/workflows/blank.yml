@@ -1,10 +1,11 @@
 name: getBranchName
-on: [pull_request, push]
+on: [pull_request, push, create]
 
 jobs:
   which_branch:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v2
       # extract branch name
       - name: Extract branch name
         if: github.event_name != 'pull_request'
@@ -16,6 +17,10 @@ jobs:
       - name: Print branch name
         if: github.event_name == 'pull_request'
         run: echo ${GITHUB_HEAD_REF}
-        
-      - name: trigger shell script
+
+      # print branch name
+      - name: Get branch name
+        run: echo 'The branch name is' $BRANCH_NAME
+      
+      - name: Trigger script
         run: .github/env.sh
