@@ -10,7 +10,7 @@ jobs:
       - name: Extract branch name
         if: github.event_name != 'pull_request'
         shell: bash
-        run: $(echo $GITHUB_REF | sed -e 's/refs\/heads\/\(.*\)/\1/g')
+        run: echo ${GITHUB_REF#refs/heads/}
         id: extract_branch
 
       # extract branch name on pull request
