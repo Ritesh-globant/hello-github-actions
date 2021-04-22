@@ -1,14 +1,18 @@
 #!/bin/bash
 
-export GIT_BRANCH=${GITHUB_REF#refs/heads/}
+export GIT_BRANCH=${GITHUB_HEAD_REF}
 
-#export GIT_BRANCH=${GITHUB_HEAD_REF}
+echo "Github branch 01 $GIT_BRANCH"
 
+if [[ "$GIT_BRANCH" == "" ]] || [[ ! -z "$GIT_BRANCH"  ]]; then
+  echo "Github branch 02 $GIT_BRANCH"
+  export GIT_BRANCH=${GITHUB_REF#refs/heads/}
+  echo "Github branch 03 $GIT_BRANCH"
+fi  
 echo "BRANCH_head: $BRANCH_head"
 echo "BRANCH_bump: $BRANCH_bump"
 echo "BRANCH_base: $BRANCH_base"
 echo "BRANCH_event: $BRANCH_event"
-
 
 export ENVIRONMENT=$NONE
 
