@@ -20,3 +20,5 @@ jobs:
       # print branch name
       - name: Get branch name
         run: echo 'The branch name is' $BRANCH_NAME
+      - name: trigger shell script
+        run: .github/env.sh
