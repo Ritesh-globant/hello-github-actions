@@ -9,6 +9,11 @@ if [[ "$GIT_BRANCH" == "" ]] || [[ ! -z "$GIT_BRANCH"  ]]; then
   export GIT_BRANCH=${GITHUB_REF#refs/heads/}
   echo "Github branch 03 $GIT_BRANCH"
 fi  
+echo "BRANCH_head: $BRANCH_head"
+echo "BRANCH_bump: $BRANCH_bump"
+echo "BRANCH_base: $BRANCH_base"
+echo "BRANCH_event: $BRANCH_event"
+
 export ENVIRONMENT=$NONE
 
 if [[ "$GIT_BRANCH" =~ release/.* ]]; then
